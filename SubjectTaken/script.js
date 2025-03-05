@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('search-input');
     const coursesContainer = document.getElementById('courses-container');
 
     function fetchCourses() {
@@ -35,6 +36,26 @@ document.addEventListener('DOMContentLoaded', () => {
             tableBody.innerHTML += row;
         });
     }
+
+    function filterCourses(keyword, courses) {
+        const filteredCourses = courses.filter(course => 
+            course.description.toLowerCase().includes(keyword.toLowerCase())
+        );
+        displayCourses(filteredCourses);
+    }
+
+    searchInput.addEventListener('input', (e) => {
+        fetch("https://raw.githubusercontent.com/AlainaApolinario/APPDEV1/main/SubjectTaken/courses.json")
+            .then(response => response.json())
+            .then(data => {
+                if (data.courses && Array.isArray(data.courses)) {
+                    filterCourses(e.target.value, data.courses);
+                } else {
+                    console.error("Error: Unexpected JSON structure", data);
+                }
+            })
+            .catch(error => console.error("Error loading courses:", error));
+    });
 
     // Initial fetch and display of all courses
     fetchCourses();
