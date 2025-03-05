@@ -183,7 +183,7 @@ h1, h2 {
 
     nav ul li a {
         padding: 10px;
-        display: block;
+        display: flex;
     }
 
     table, th, td {
