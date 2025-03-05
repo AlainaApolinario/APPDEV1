@@ -1,28 +1,34 @@
 document.addEventListener('DOMContentLoaded', () => {
     const coursesContainer = document.getElementById('courses-container');
 
-    function fetchCourses() {
-        fetch("https://raw.githubusercontent.com/AlainaApolinario/APPDEV1/main/SubjectTaken/courses.json")
-            .then(response => response.json())
-            .then(data => {
-                if (data.courses && Array.isArray(data.courses)) {
-                    displayCourses(data.courses); // Extract courses array
-                } else {
-                    console.error("Error: Unexpected JSON structure", data);
-                }
-            })
-            .catch(error => console.error("Error loading courses:", error));
+    if (!coursesContainer) {
+        console.error("Error: Table body element with ID 'courses-container' not found.");
+        return;
+    }
+
+    async function fetchCourses() {
+        try {
+            const response = await fetch("https://raw.githubusercontent.com/AlainaApolinario/APPDEV1/main/SubjectTaken/courses.json");
+            
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+
+            const data = await response.json();
+            console.log("Fetched Data:", data); // Debugging
+
+            if (data.courses && Array.isArray(data.courses)) {
+                displayCourses(data.courses);
+            } else {
+                console.error("Error: Unexpected JSON structure", data);
+            }
+        } catch (error) {
+            console.error("Error loading courses:", error);
+        }
     }
 
     function displayCourses(courses) {
-        let tableBody = document.getElementById("courses-container");
-
-        if (!tableBody) {
-            console.error("Error: Table body element not found.");
-            return;
-        }
-
-        tableBody.innerHTML = ""; // Clear previous content
+        coursesContainer.innerHTML = ""; // Clear previous content
 
         courses.forEach(course => {
             let row = `<tr>
@@ -32,10 +38,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 <td>${course.description}</td>
                 <td>${course.credit}</td>
             </tr>`;
-            tableBody.innerHTML += row;
+            coursesContainer.insertAdjacentHTML("beforeend", row);
         });
     }
 
-    // Initial fetch and display of all courses
+    // Fetch and display courses on page load
     fetchCourses();
 });
