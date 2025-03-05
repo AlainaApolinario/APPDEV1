@@ -43,17 +43,16 @@ nav ul li a:hover {
 }
 
 img {
-    display: block; 
-    margin: 20px auto; 
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 15px;
+    margin-top: 20px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 15px rgba(0,0,0,0.3);
+    border: 5px solid #333;
     max-width: 100%;
     height: auto;
-    border-radius: 50%;
-    border: 5px solid rgb(51, 51, 51);
+    display: block; /* Center the image */
+    margin-left: auto; /* Center the image */
+    margin-right: auto; /* Center the image */
 }
-
-
-
 
 .content {
     flex: 1; 
@@ -97,7 +96,6 @@ ul li strong {
     font-weight: bold;
 }
 
-
 footer {
     background: #222;
     color: white;
@@ -109,7 +107,6 @@ footer {
     bottom: 0;
     margin-top: 20px;
 }
-
 
 table {
     width: 100%;
@@ -133,7 +130,6 @@ tr:nth-child(even) {
     background-color: #f2f2f2;
 }
 
-
 #search-input {
     width: 100%;
     padding: 10px;
@@ -149,7 +145,6 @@ tr:nth-child(even) {
     border-color: #333;
     box-shadow: 0px 0px 15px rgba(0,0,0,0.2);
 }
-
 
 .courses-container {
     display: flex;
@@ -169,7 +164,6 @@ h1, h2 {
     text-align: center;
 }
 
-
 @media (max-width: 768px) {
     .content {
         width: 90%;
@@ -183,7 +177,7 @@ h1, h2 {
 
     nav ul li a {
         padding: 10px;
-        display: flex;
+        display: block;
     }
 
     table, th, td {
