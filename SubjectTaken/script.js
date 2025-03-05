@@ -1,4 +1,4 @@
-fetch('https://raw.githubusercontent.com/SubjectTaken/courses.json')
+fetch('https://raw.githubusercontent.com/AlainaApolinario/APPDEV1/refs/heads/main/SubjectTaken/courses.json')
   .then(response => response.json())
   .then(data => {
       const coursesContainer = document.getElementById('courses-container');
