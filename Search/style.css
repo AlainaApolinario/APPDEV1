@@ -93,11 +93,15 @@ footer {
     margin-top: 5px;
     background: #222;
     color: white;
-    padding: 5px;
+    padding: 10px; 
     font-size: 14px;
-    position: fixed;
-    bottom: 0;
+    position: relative; 
     width: 100%;
+    text-align: center;
+}
+
+body {
+    padding-bottom: 60px; 
 }
 
 footer a {
