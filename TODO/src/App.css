@@ -143,7 +143,7 @@ li.completed {
 
 /* Delete Button */
 .delete-btn {
-  background: #f8f6f6;
+  background: #faf8f8;
   padding: 8px 12px;
   border-radius: 8px;
   transition: background 0.3s ease;
